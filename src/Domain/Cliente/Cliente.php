@@ -19,18 +19,18 @@ class Cliente
         $this->age = $age;
     }
 
-   
-    public function getName() : string
+
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function getAge() : string
+    public function getAge(): string
     {
         return $this->age;
     }
