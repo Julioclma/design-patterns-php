@@ -6,7 +6,7 @@ use Julio\Projeto\Domain\Cliente\Cliente;
 use Julio\Projeto\Domain\Cliente\RepositoryCliente;
 use PDO;
 
-class CadastroClientePDO implements RepositoryCliente
+class RepositoryClientePDO implements RepositoryCliente
 {
 
     private PDO $pdo;
