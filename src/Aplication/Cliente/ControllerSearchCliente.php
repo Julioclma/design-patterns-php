@@ -3,15 +3,13 @@
 namespace Julio\Projeto\Aplication\Cliente;
 
 use Julio\Projeto\Domain\Cliente\Cliente;
-use Julio\Projeto\Infra\Cliente\RepositoryClientePDO;
+use Julio\Projeto\Domain\Cliente\RepositoryCliente;
 use PDO;
 
 class ControllerSearchCliente
 {
-    public function executa(PDO $pdo, string $email): array
+    public function executa(RepositoryCliente $repository, string $email): array
     {
-        $repository = new RepositoryClientePDO($pdo);
-
         $cliente = $repository->search($email);
 
         return [
