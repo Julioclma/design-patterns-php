@@ -2,23 +2,31 @@
 
 namespace Julio\Projeto\Infra\Desconto;
 
-use Julio\Projeto\Domain\Desconto\DescontoInterface;
+use Julio\Projeto\Domain\Desconto\DescontoImplement;
 use Julio\Projeto\Domain\Orcamento\Orcamento;
 
-class SemDesconto implements DescontoInterface
+class SemDesconto extends DescontoImplement
 {
 
-    public function __construct(Orcamento $orcamento)
+    private string $nameDesconto = "Sem desconto";
+
+    public function __construct()
     {
-        $this->verifyDesconto($orcamento);
+        parent::__construct(null);
     }
-    public function calcula(Orcamento $orcamento): float
+
+    public  function calculaDesconto(Orcamento $orcamento): string
     {
-        return 0;
+       return $this->getNameDesconto();
     }
 
     public function verifyDesconto(Orcamento $orcamento): bool
     {
         return false;
+    }
+
+    public function getNameDesconto(): string
+    {
+        return $this->nameDesconto;
     }
 }
