@@ -14,4 +14,4 @@ include_once 'vendor/autoload.php';
 
 // echo (new CalculadoraDeImpostos)->executa(new ICMS, new Orcamento(10));
 
-echo (new CalculadoraDeDescontos)->calculaDesconto(new Orcamento(21, 0));
+echo (new CalculadoraDeDescontos)->calculaDesconto(new Orcamento(100, 6));

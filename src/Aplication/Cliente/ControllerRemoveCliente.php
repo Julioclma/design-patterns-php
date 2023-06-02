@@ -7,8 +7,8 @@ use PDO;
 
 class ControllerRemoveCliente
 {
-    public function executa(PDO $pdo, string $email): bool
+    public function executa(RepositoryClientePDO $repository, string $email): bool
     {
-        return (new RepositoryClientePDO($pdo))->remove($email);
+        return $repository->remove($email);
     }
 }

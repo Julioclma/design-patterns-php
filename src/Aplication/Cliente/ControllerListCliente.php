@@ -7,8 +7,8 @@ use PDO;
 
 class ControllerListCliente
 {
-    public function executa(PDO $pdo) : array
+    public function executa(RepositoryClientePDO $repository) : array
     {
-        return (new RepositoryClientePDO($pdo))->list();
+        return $repository->list();
     }
 }

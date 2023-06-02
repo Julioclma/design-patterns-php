@@ -8,10 +8,8 @@ use PDO;
 
 class ControllerSearchCliente
 {
-    public function executa(PDO $pdo, string $email): array
+    public function executa(RepositoryClientePDO $repository, string $email): array
     {
-        $repository = new RepositoryClientePDO($pdo);
-
         $cliente = $repository->search($email);
 
         return [

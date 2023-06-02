@@ -8,10 +8,10 @@ use PDO;
 
 class ControllerEditCliente
 {
-    public function executa(PDO $pdo, string $emailAntigo, string $emailNovo, string $name, string $age) : bool
+    public function executa(RepositoryClientePDO $repository, string $emailAntigo, string $emailNovo, string $name, string $age) : bool
     {
 
-      return  (new RepositoryClientePDO($pdo))->edit($emailAntigo, new Cliente($name, $emailNovo, $age));
+      return  $repository->edit($emailAntigo, new Cliente($name, $emailNovo, $age));
 
     }
 
