@@ -2,12 +2,12 @@
 
 namespace Julio\Projeto\Aplication\Cliente;
 
-use Julio\Projeto\Infra\Cliente\RepositoryClientePDO;
+use Julio\Projeto\Domain\Cliente\RepositoryCliente;
 use PDO;
 
 class ControllerRemoveCliente
 {
-    public function executa(RepositoryClientePDO $repository, string $email): bool
+    public function executa(RepositoryCliente $repository, string $email): bool
     {
         return $repository->remove($email);
     }

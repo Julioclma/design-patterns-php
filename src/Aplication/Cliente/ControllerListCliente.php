@@ -2,12 +2,12 @@
 
 namespace Julio\Projeto\Aplication\Cliente;
 
-use Julio\Projeto\Infra\Cliente\RepositoryClientePDO;
+use Julio\Projeto\Domain\Cliente\RepositoryCliente;
 use PDO;
 
 class ControllerListCliente
 {
-    public function executa(RepositoryClientePDO $repository) : array
+    public function executa(RepositoryCliente $repository) : array
     {
         return $repository->list();
     }
