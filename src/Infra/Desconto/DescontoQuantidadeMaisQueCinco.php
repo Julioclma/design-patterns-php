@@ -2,26 +2,24 @@
 
 namespace Julio\Projeto\Infra\Desconto;
 
-use Julio\Projeto\Domain\Desconto\DescontoInterface;
+use Julio\Projeto\Domain\Desconto\DescontoImplement;
 use Julio\Projeto\Domain\Orcamento\Orcamento;
 
-class DescontoQuantidadeMaisQueCinco implements DescontoInterface
+class DescontoQuantidadeMaisQueCinco extends DescontoImplement
 {
-
-    private DescontoInterface $nextDesconto;
-
-    public function __construct(Orcamento $orcamento)
+    private string $nameDesconto = "Mais que 5 produtos";
+    public function __construct()
     {
-        $this->nextDesconto = new SemDesconto($orcamento);
+        parent::__construct(new SemDesconto);
     }
-    public function calcula(Orcamento $orcamento): float
+    public  function calculaDesconto(Orcamento $orcamento): string
     {
         if ($this->verifyDesconto($orcamento)) {
 
-            return $orcamento->getValor() * 0.1;
+            return "Nome do Desconto: " . $this->getNameDesconto() . " - Desconto: " . $orcamento->getValor() * 0.15;
         }
 
-        return $this->nextDesconto->calcula($orcamento);
+        return $this->nextDesconto->calculaDesconto($orcamento);
     }
 
     public function verifyDesconto(Orcamento $orcamento): bool
@@ -30,5 +28,10 @@ class DescontoQuantidadeMaisQueCinco implements DescontoInterface
             return true;
         }
         return false;
+    }
+
+    public function getNameDesconto(): string
+    {
+        return $this->nameDesconto;
     }
 }

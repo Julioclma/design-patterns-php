@@ -2,25 +2,26 @@
 
 namespace Julio\Projeto\Infra\Desconto;
 
-use Julio\Projeto\Domain\Desconto\DescontoInterface;
+use Julio\Projeto\Domain\Desconto\DescontoImplement;
 use Julio\Projeto\Domain\Orcamento\Orcamento;
 
-class DescontoMaiorQue500Reais implements DescontoInterface
+class DescontoMaiorQue500Reais extends DescontoImplement
 {
-    private DescontoInterface $nextDesconto;
 
-    public function __construct(Orcamento $orcamento)
+    private string $nameDesconto = "Mais que 500 reais";
+
+    public function __construct()
     {
-        $this->nextDesconto = new DescontoQuantidadeMaisQueCinco($orcamento);
+        parent::__construct(new DescontoQuantidadeMaisQueCinco);
     }
-    public  function calcula(Orcamento $orcamento): float
+    public  function calculaDesconto(Orcamento $orcamento): string
     {
         if ($this->verifyDesconto($orcamento)) {
 
-            return $orcamento->getValor() * 0.1;
+            return "Nome do Desconto: ".$this->getNameDesconto(). " - Desconto: ".$orcamento->getValor() * 0.1;
         }
 
-        return $this->nextDesconto->calcula($orcamento);
+        return $this->nextDesconto->calculaDesconto($orcamento);
     }
 
     public function verifyDesconto(Orcamento $orcamento): bool
@@ -29,5 +30,10 @@ class DescontoMaiorQue500Reais implements DescontoInterface
             return true;
         }
         return false;
+    }
+
+    public function getNameDesconto() : string
+    {
+        return $this->nameDesconto;
     }
 }
