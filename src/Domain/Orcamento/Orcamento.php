@@ -3,8 +3,8 @@
 namespace Julio\Projeto\Domain\Orcamento;
 
 use InvalidArgumentException;
-use Julio\Projeto\Domain\Orcamento\EstadosOrcamento\EmAprovacao;
 use Julio\Projeto\Domain\Orcamento\EstadosOrcamento\EstadoOrcamento;
+use Julio\Projeto\Infra\Orcamento\EmAprovacao;
 
 class Orcamento
 {

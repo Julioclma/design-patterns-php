@@ -1,8 +1,9 @@
 <?php
 
-namespace Julio\Projeto\Domain\Orcamento\EstadosOrcamento;
+namespace Julio\Projeto\Infra\Orcamento;
 
 use DomainException;
+use Julio\Projeto\Domain\Orcamento\EstadosOrcamento\EstadoOrcamento;
 use Julio\Projeto\Domain\Orcamento\Orcamento;
 
 class Rejeitado extends EstadoOrcamento
