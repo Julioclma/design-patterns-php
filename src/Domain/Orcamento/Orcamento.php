@@ -3,16 +3,21 @@
 namespace Julio\Projeto\Domain\Orcamento;
 
 use InvalidArgumentException;
+use Julio\Projeto\Domain\Orcamento\EstadosOrcamento\EmAprovacao;
+use Julio\Projeto\Domain\Orcamento\EstadosOrcamento\EstadoOrcamento;
 
 class Orcamento
 {
     private float $valor;
     private int $quantidadeItens;
+    public EstadoOrcamento $estadoAtual;
+
 
     public function __construct(float $valor, int $quantidadeItens)
     {
         $this->setValor($valor);
         $this->setQuantidade($quantidadeItens);
+        $this->estadoAtual = new EmAprovacao;
     }
     private function setValor(float $valor): void
     {
@@ -31,7 +36,7 @@ class Orcamento
         $this->quantidadeItens = $quantidadeItens;
     }
 
-    public function getQuantidade() : int
+    public function getQuantidade(): int
     {
         return $this->quantidadeItens;
     }
@@ -39,5 +44,25 @@ class Orcamento
     public function getValor(): float
     {
         return $this->valor;
+    }
+
+    public function aplicaDescontoExtra(): void
+    {
+        $this->valor -=  $this->estadoAtual->calculaDescontoExtra($this);
+    }
+
+    public function aprova(): void
+    {
+        $this->estadoAtual->aprova($this);
+    }
+
+    public function reprova(): void
+    {
+        $this->estadoAtual->reprova($this);
+    }
+
+    public function finaliza(): void
+    {
+        $this->estadoAtual->finaliza($this);
     }
 }
