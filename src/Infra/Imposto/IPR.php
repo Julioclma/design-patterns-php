@@ -6,7 +6,7 @@ use Julio\Projeto\Domain\Orcamento\Orcamento;
 
 class IPR extends ImpostoSobreQuantidadeValor
 {
-    public function checaImpostoDeQuantidade(Orcamento $orcamento): float
+    protected function checaImpostoDeQuantidade(Orcamento $orcamento): float
     {
         if ($orcamento->getQuantidade() > 5) {
             return $orcamento->getValor() * 0.05;
@@ -15,7 +15,7 @@ class IPR extends ImpostoSobreQuantidadeValor
         return 0;
     }
 
-    public function checaImpostoDeValor(Orcamento $orcamento): float
+    protected function checaImpostoDeValor(Orcamento $orcamento): float
     {
 
         if ($orcamento->getValor() > 1000) {
