@@ -2,12 +2,12 @@
 
 use Julio\Projeto\Aplication\Desconto\CalculadoraDeDescontos;
 use Julio\Projeto\Aplication\Impostos\CalculadoraDeImpostos;
-use Julio\Projeto\Domain\Orcamento\EstadosOrcamento\EmAprovacao;
 use Julio\Projeto\Domain\Orcamento\Orcamento;
 use Julio\Projeto\Infra\Desconto\DescontoQuantidadeMaisQueCinco;
 use Julio\Projeto\Infra\Desconto\VerificadorDeDescontos;
 use Julio\Projeto\Infra\Imposto\ICMS;
 use Julio\Projeto\Infra\Imposto\IPR;
+use Julio\Projeto\Infra\Orcamento\EmAprovacao;
 
 include_once 'vendor/autoload.php';
 
