@@ -20,17 +20,19 @@ class GeraPedido
         $this->nomeCliente = $nomeCliente;
     }
 
-    public function executa()
+    public function getOrcamento(): float
     {
-
-        $orcamento = new Orcamento($this->valorOrcamento, $this->numeroItens);
-
-        $pedido = new Pedido();
-
-        $pedido->dataFinalizacao = new \DateTimeImmutable();
-
-        $pedido->nomeCliente = $this->nomeCliente;
-
-        $pedido->orcamento = $orcamento;
+        return $this->valorOrcamento;
     }
+
+    public function getNumItens(): int
+    {
+        return $this->numeroItens;
+    }
+
+    public function getNomeCliente(): string
+    {
+        return $this->nomeCliente;
+    }
+    
 }
