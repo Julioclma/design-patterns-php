@@ -11,17 +11,14 @@ use Julio\Projeto\Domain\Pedido\Pedido;
 
 class GerarPedidoHandler
 {
-
-    private array $acoesAoGerarPedido;
-
     public function __construct(/*Pedido repository*/)
     {
     }
 
-    public function adicionarAcaoAoGerarPedido(array $acoes): void
+    public function adicionarAcaoAoGerarPedido(array $acoes, Pedido $pedido): void
     {
         foreach ($acoes as  $acao) {
-            $this->acoesAoGerarPedido[] = $acao;
+            $acao->executaAcao($pedido);
         }
     }
 
@@ -37,10 +34,6 @@ class GerarPedidoHandler
 
         $pedido->orcamento = $orcamento;
 
-        $this->adicionarAcaoAoGerarPedido([new CriarPedidoNoBanco(), new EnviarPedidoPorEmail(), new GerarLog()]);
-
-        foreach ($this->acoesAoGerarPedido as $acao) {
-            $acao->executaAcao($pedido);
-        }
+        $this->adicionarAcaoAoGerarPedido([new CriarPedidoNoBanco(), new EnviarPedidoPorEmail(), new GerarLog()], $pedido);
     }
 }
