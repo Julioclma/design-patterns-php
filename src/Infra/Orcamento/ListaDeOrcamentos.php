@@ -34,7 +34,7 @@ class ListaDeOrcamentos implements IteratorAggregate
     public function orcamentosFinalizados(): array
     {
         foreach ($this->orcamentos as $orcamento) {
-            if (get_class($orcamento->estadoAtual) === "Julio\Projeto\Infra\Orcamento\Finalizado") {
+            if ($orcamento->estadoAtual instanceof Finalizado) {
                 $this->orcamentosFinalizados[] = $orcamento;
             }
         }
