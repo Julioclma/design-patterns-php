@@ -1,0 +1,9 @@
+padrão de projeto comportamental
+
+strategy
+chain of responsability
+template method
+state
+command -> caso de uso
+observer
+iterator
