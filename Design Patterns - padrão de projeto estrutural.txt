@@ -2,3 +2,4 @@ Adapters
 bridge
 Decorator -> adicionar funcionalidades em tempo de execução
 Composite
+Facade
