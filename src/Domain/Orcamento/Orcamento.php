@@ -3,6 +3,7 @@
 namespace Julio\Projeto\Domain\Orcamento;
 
 use InvalidArgumentException;
+use Julio\Projeto\Domain\ItemOrcamento;
 use Julio\Projeto\Domain\Orcamento\EstadosOrcamento\EstadoOrcamento;
 use Julio\Projeto\Infra\Orcamento\EmAprovacao;
 
@@ -11,6 +12,9 @@ class Orcamento
     private float $valor;
     private int $quantidadeItens;
     public EstadoOrcamento $estadoAtual;
+    private array $itens;
+
+
 
 
     public function __construct(float $valor, int $quantidadeItens)
@@ -28,6 +32,16 @@ class Orcamento
         $this->valor = $valor;
     }
 
+    public function addItem(ItemOrcamento $itemOrcamento): void
+    {
+        $this->itens[] = $itemOrcamento;
+    }
+    public function valor(): float
+    {
+        return array_reduce($this->itens, function (float $valorAcumulado, ItemOrcamento $item) {
+            return $item->valor + $valorAcumulado;
+        }, 0);
+    }
     private function setQuantidade(int $quantidadeItens): void
     {
         if ($quantidadeItens < 0) {

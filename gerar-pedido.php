@@ -13,5 +13,5 @@ $numItens = $argv[2];
 
 $nomeCliente = $argv[3];
 
-//gere
+//gerex'x
 (new GerarPedidoHandler())->executa(new GeraPedido($valorOrcamento, $numItens, $nomeCliente));

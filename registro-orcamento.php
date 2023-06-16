@@ -6,5 +6,5 @@ use Julio\Projeto\Infra\Http\CurlImplementation;
 use Julio\Projeto\Infra\Http\ReactImplementation;
 
 $controllerOrcamento = new RegistroDeOrcamento(new ReactImplementation);
-
+    
 $controllerOrcamento->registrar(new Orcamento(22, 2));
